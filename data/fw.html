@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OTA Update</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		#status {
+			display: none;
+			background-color: #ddd;
+			border: 1px solid #aaa;
+			padding: 10px;
+			margin-top: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>OTA Update</h1>
+	<form method="POST" action="/update" enctype="multipart/form-data">
+		<input type="file" name="update">
+		<input type="submit" value="Update">
+	</form>
+	<div id="status">
+		Updating... Please wait.
+	</div>
+	<script>
+		document.querySelector('form').addEventListener('submit', function() {
+			document.querySelector('#status').style.display = 'block';
+		});
+	</script>
+</body>
+</html>

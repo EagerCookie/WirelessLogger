@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function updateAnalogValue() {
+        var xhttp = new XMLHttpRequest(); // create an XMLHttpRequest object
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) { // check if the request was successful
+		  var obj = JSON.parse(this.responseText);
+            document.getElementById("analog-value").innerHTML = obj["Analog"]; // update the value displayed on the page
+            document.getElementById("temp-value").innerHTML = obj["temp"]; // update the value displayed on the page
+          }
+        };
+        xhttp.open("GET", "/data", true); // send a GET request to the server
+        xhttp.send();
+      }
+      setInterval(updateAnalogValue, 1000); // update the value every second
+    </script>
+	<link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="liveValues">
+	<h1>Analog Value: <span id="analog-value"></span></h1>
+	<h1>Temp: <span id="temp-value"></span></h1>
+	</div>
+	<div id="calendar">
+
+
+    <div class="light calendar">
+        <div class="calendar-header">
+            <span class="month-picker" id="month-picker">April</span>
+            <div class="year-picker">
+                <span class="year-change" id="prev-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2022</span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-days"></div>
+        </div>
+       
+        <div class="month-list"></div>
+    </div>
+    <script src="calendar.js"></script>
+
+	</div>
+  </body>
+</html>
