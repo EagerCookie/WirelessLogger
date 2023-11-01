@@ -1,6 +1,12 @@
 # WirelessLogger
  This project created for my personal needs such as wirelessly tracking sensors and logging values into SD card
 
+ESP8266 <-> SD module
+D8 <-> CS
+D7  <-> MOSI
+D6 <-> MISO
+D5 <-> SCK
+
 #Known issues
 -Stop making logs while downloading huge log file
 
